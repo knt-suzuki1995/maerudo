@@ -4,12 +4,31 @@
     <title>フォーム送信テスト</title>
 </head>
 <body>
-    <form id="testForm" method="post" action="https://script.google.com/a/macros/gizumo-inc.jp/s/AKfycbzGp_gJ8ihOc0UxtrNcjmQqCagatnglJDEgUEVG5bQyRRTweNRkt72aQSanpmWuzUgE/exec">
-        <input type="text" name="name" placeholder="名前" required>
+    <form id="submitForm">
+        <input type="text" name="name" placeholder="名前2" required>
         <input type="email" name="email" placeholder="メールアドレス" required>
         <textarea name="message" placeholder="メッセージ" required></textarea>
-        <button type="submit">送信</button>
-
+        <button type="button" id="submitButton">送信</button>
     </form>
+
+    <script>
+      document.getElementById('submitButton').addEventListener('click', function() {
+        var formData = new FormData(document.getElementById('submitForm'));
+
+        fetch('https://script.google.com/a/macros/gizumo-inc.jp/s/AKfycbxqaVH4J76KLeAn6HBGhvAvlh-vhMjCwVePtw3SB8HplC9EXrlFCSdHU1Db0XHmusza/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.result === "success") {
+                window.location.href = "https://knt-suzuki1995.github.io/maerudo/thanks"; // サンクスページのURL
+            } else {
+                alert("送信に失敗しました。");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    </script>
 </body>
 </html>
