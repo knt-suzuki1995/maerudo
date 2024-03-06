@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>読み取り専用フォーム</title>
-    <link rel="stylesheet" href="style.css">
+    <title>フォーム送信テスト</title>
 </head>
 <body>
-    <form id="readonlyForm">
-        <label for="name">名前:</label>
-        <input type="text" id="name" name="name" value="山田 太郎" readonly>
-
-        <label for="email">メールアドレス:</label>
-        <input type="email" id="email" name="email" value="example@example.com" readonly>
-
-        <label for="message">メッセージ:</label>
-        <textarea id="message" name="message" rows="4" readonly>これは読み取り専用のテキストエリアです。</textarea>
+    <form id="testForm" method="post" action="https://script.google.com/a/macros/gizumo-inc.jp/s/AKfycbyITjRN6sB35k1y2w9x4bguNz6O33IRH3hO8HfqXYGNHp5_PBlLLQkpY5zUKtO1arlU/exec">
+        <input type="text" name="name" placeholder="名前" required>
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <textarea name="message" placeholder="メッセージ" required></textarea>
+        <button type="submit">送信</button>
     </form>
-    <script src="script.js"></script>
 </body>
 </html>
